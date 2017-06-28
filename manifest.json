@@ -95,6 +95,18 @@
           "slug",
           "theme"
         ]
+      },
+      {
+        "title": "Extending renderer",
+        "tags": [
+          "plugin",
+          "features",
+          "integrate",
+          "base",
+          "conditional",
+          "caveats",
+          "webpack"
+        ]
       }
     ],
 
