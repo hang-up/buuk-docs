@@ -3,6 +3,37 @@
 Bük uses [markdown-it](https://github.com/markdown-it/markdown-it) as its underlying parser so any non conventional markdown features will require the use of a `markdown-it-plugin`.  
 -> A list of plugin is available **[here](https://www.npmjs.com/browse/keyword/markdown-it-plugin)**. <-
  
+--- 
+
+## Default plugins
+
+### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+
+- 19^th^
+- H~2~O
+
+### [\<center>](https://github.com/jay-hodgson/markdown-it-center-text)
+
+-> Centered text <-
+
+### [\<underline>](https://www.npmjs.com/package/markdown-it-underline)
+
+_underlined text_
+
+### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+
+> Classic markup: :wink: :cry: :laughing: :yum:
+>
+> Shortcuts (emoticons): :-) :-( 8-) ;)
+
+see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
+
+### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+
+==Marked text==
+
+--- 
+
 ## How to?
 
 Integrating a plugin into Bük can be achieved in (usually) a few steps:
