@@ -3,6 +3,37 @@
 Bük uses [markdown-it](https://github.com/markdown-it/markdown-it) as its underlying parser so any non conventional markdown features will require the use of a `markdown-it-plugin`.  
 -> A list of plugin is available **[here](https://www.npmjs.com/browse/keyword/markdown-it-plugin)**. <-
  
+--- 
+
+## Default plugins
+
+### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+
+- 19^th^
+- H~2~O
+
+### [\<center>](https://github.com/jay-hodgson/markdown-it-center-text)
+
+-> Centered text <-
+
+### [\<underline>](https://www.npmjs.com/package/markdown-it-underline)
+
+_underlined text_
+
+### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+
+> Classic markup: :wink: :cry: :laughing: :yum:
+>
+> Shortcuts (emoticons): :-) :-( 8-) ;)
+
+see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
+
+### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+
+==Marked text==
+
+--- 
+
 ## How to?
 
 Integrating a plugin into Bük can be achieved in (usually) a few steps:
@@ -20,7 +51,7 @@ Integrating a plugin into Bük can be achieved in (usually) a few steps:
 
 > **2) Reference plugin**
 
-In `src/js/bootstrap/renderBoostrap.js`, inside `boot()` is where we load plugins to the renderer.
+In `src/js/bootstrap/renderer.js` is where we attach plugins to the renderer.
 
 ```javascript
 md
@@ -40,16 +71,16 @@ It is therefore highly recommended to conditionally import feature specific plug
 
 ##### Conditional import
 
-The easiest way to conditionally import a plugin is to set up an option key in the `manifest.json`. Then, import the plugin in `src/js/bootstrap/renderBoostrap.js@boot()` under `Conditional plugins`.
+The easiest way to conditionally import a plugin is to set up an option key in the `manifest.json`. Then, import the plugin in `src/js/bootstrap/renderer.js@renderer()` under `Conditional plugins`.
  
 --- 
 
 > **3) Webpack caveats** (Optional)
 
-Some plugins will be written using ES6. Although it is possible for webpack to minify ES6 code through [uglify-js-harmony](https://www.npmjs.com/package/uglify-js-harmony), it is not the default set up by webpack at the current time.
+Some plugins will be written using ES6. Although it is possible for webpack to minify ES6 code through [uglify-js-harmony](https://www.npmjs.com/package/uglify-js-harmony), it is not the default setup at the current time.
 Therefore if the plugin you are intending to import does make use of ES6 features, you will need to exclude it from being minified by webpack.
 
-To do so, add your plugin name in `/build/webpack.config.js`, under the `/\.js$/` test:
+To do so, add your plugin name in `/build/webpack.base.conf.js`, under the `/\.js$/` test:
  
 ```javascript
 {
@@ -69,7 +100,7 @@ Let's go through an example by extending the renderer with the [markdown-it-sup 
 > 2) **Reference plugin**
 
 * If we consider this plugin as a base plugin. 
-In `src/js/bootstrap/renderBoostrap.js`, simply add:
+In `src/js/bootstrap/renderer.js`, simply add:
 
 ```javascript
 md
@@ -90,7 +121,7 @@ Create a new options key in `manifest.json`
 }
 ```
 
-Then in `src/js/bootstrap/renderBoostrap.js`, add:
+Then in `src/js/bootstrap/renderer.js`, add:
 
 ```javascript
 md

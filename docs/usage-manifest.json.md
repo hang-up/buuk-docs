@@ -1,49 +1,52 @@
 # Manifest.json
 
-The heart of Bük is laying on its `manifest.json` file. The manifest is responsible for setting up progressive web application features such as orientation, icons, ... but also for creating the file hierarchy of your markdown files.
+The heart of Bük is laying on its `static/manifest.json` folder.  
+The manifest is responsible for setting up progressive web application features such as orientation, icons, ... but also for creating the file hierarchy of your markdown files.
 The default manifest will follow this structure:
 ```json
-    {
-        "short_name": "Bük",
-        "name": "A markdown based documentation generator.",
-        "sub": "Bük is a fast and simple markdown based static site generator geared towards documentation.",
-
-        "background_color": "#fff",
-        "theme_color": "#fff",
-        "display": "standalone",
-        "orientation": "portrait",
-
-        "start_url": ".",
-
-        "version": "3.0.x",
-        
-        "icons": [
-            {
-              "src": "/dist/images/logo.png",
-              "type": "image/png",
-              "sizes": "512x512"
-            }
-        ],
-        
-        "options": {
-            "advanced_slugs": true,
-            "theme": "default",
-            "lang": "en"
+{
+      "name": "A markdown based documentation generator.",
+      "short_name": "Bük",
+      "sub": "Bük is a fast and simple markdown based static site generator geared towards documentation.",    
+    
+      "icons": [
+        {
+          "src": "/static/img/icons/android-chrome-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
         },
-        
-        "articles" : {                              // All articles to be indexed
-            "Category 1": [                         // Category name
-              {
-                "title": "Article title",           // Article name
-                "tags": [                           // Tags to use when searched
-                  "tag 1",
-                  "tag 2",
-                  "tag 3"
-                ]
-              }
-            ]
+        {
+          "src": "/static/img/icons/android-chrome-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
         }
+      ],
+      "start_url": "/",
+      "display": "standalone",
+      "orientation": "portrait",
+      "background_color": "#fff",
+      "theme_color": "#fff",
+      
+      "options": {
+        "advanced_slugs": true,
+        "introduction": null,
+        "lang": "en",
+        "uml": false
+      },
+        
+      "articles" : {                              // All articles to be indexed
+        "Category 1": [                         // Category name
+          {
+            "title": "Article title",           // Article name
+            "tags": [                           // Tags to use when searched
+              "tag 1",
+              "tag 2",
+              "tag 3"
+            ]
+          }
+        ]
     }
+}
 ```
 
 >> This manifest is a web app manifest as well as a Bük specific manifest. As such, only `articles` and `options` will be described here. For other members, please refer to the [Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
@@ -54,17 +57,17 @@ The default manifest will follow this structure:
 - `false`: will only take the title of the article as slugs (eg. manifest.json)
 
 >> **introduction**
-- `name`: Associates a markdown file as the introduction page. The file must be referenced inside `/docs
-
->> **theme**
-- `default`: This will reference the `default` theme found in `themeBootstrap.js`. See Bootstrapper section for more details.
+- `name`: Associates a markdown file as the introduction page. The file must be referenced inside `/docs`
 
 >> **lang**
-- `en`: references `en` language in `localizationBootstrap.js`. See Boostrapper section for more details.
+- `en`: references Bük static language. By default, only `fr` and `en` are available. To add more language, simply add an entry in `src/js/store/modules/bootstrap/locale.js` and reference the key here. 
 
 >> **uml**
 - `true`: will make use of [mermaid](http://knsv.github.io/mermaid/) to generate markdown based UML diagram.
- You will need to uncomment `<link rel="stylesheet" href="dist/mermaid.min.css">` and `<script src="dist/mermaid.min.js"></script>` in `index.html`
+ You will need to :
+    * uncomment `<link rel="stylesheet" href="dist/mermaid.min.css">` in `index.html`
+    * uncomment `<script src="dist/mermaid.min.js"></script>` in `index.html`
+    * uncomment `.use(require('markdown-it-mermaid/src'))` in `src/js/bootstrap/renderer.js@renderer()`
 - `false` (default): no uml support will be available. 
 ---
 
