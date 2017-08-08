@@ -2,8 +2,8 @@
 
 Bük uses [markdown-it](https://github.com/markdown-it/markdown-it) as its underlying parser so any non conventional markdown features will require the use of a `markdown-it-plugin`.  
 -> A list of plugin is available **[here](https://www.npmjs.com/browse/keyword/markdown-it-plugin)**. <-
- 
---- 
+
+---
 
 ## Default plugins
 
@@ -32,7 +32,7 @@ see [how to change output](https://github.com/markdown-it/markdown-it-emoji#chan
 
 ==Marked text==
 
---- 
+---
 
 ## How to?
 
@@ -45,13 +45,15 @@ Integrating a plugin into Bük can be achieved in (usually) a few steps:
 
 > **1) Install plugin**
 
+Ensure you are located in the root Bük folder, then run the following:
+
 `npm install #name-of-plugin# --save-dev` 
 
 ---
 
 > **2) Reference plugin**
 
-In `src/js/bootstrap/renderer.js` is where we attach plugins to the renderer.
+Currently, plugins are added to the renderer in `src/js/bootstrap/renderer.js` .
 
 ```javascript
 md
@@ -71,9 +73,9 @@ It is therefore highly recommended to conditionally import feature specific plug
 
 ##### Conditional import
 
-The easiest way to conditionally import a plugin is to set up an option key in the `manifest.json`. Then, import the plugin in `src/js/bootstrap/renderer.js@renderer()` under `Conditional plugins`.
- 
---- 
+The easiest way to conditionally import a plugin is to set up an option key in the `static/manifest.json`. Then, import the plugin in `src/js/bootstrap/renderer.js@renderer()` under `Conditional plugins`.
+
+---
 
 > **3) Webpack caveats** (Optional)
 
@@ -81,7 +83,7 @@ Some plugins will be written using ES6. Although it is possible for webpack to m
 Therefore if the plugin you are intending to import does make use of ES6 features, you will need to exclude it from being minified by webpack.
 
 To do so, add your plugin name in `/build/webpack.base.conf.js`, under the `/\.js$/` test:
- 
+
 ```javascript
 {
     test: /\.js$/,
@@ -95,12 +97,15 @@ Let's go through an example by extending the renderer with the [markdown-it-sup 
 
 > 1) **Install plugin**
 
-`npm install markdown-it-sup --save-dev `
+```bash
+# In root Bük folder.
+bash npm install markdown-it-sup --save-dev
+```
 
 > 2) **Reference plugin**
 
 * If we consider this plugin as a base plugin. 
-In `src/js/bootstrap/renderer.js`, simply add:
+  In `src/js/bootstrap/renderer.js`, simply add:
 
 ```javascript
 md
@@ -111,7 +116,7 @@ md
 ```
 
 * If we consider this as an conditional plugin. 
-Create a new options key in `manifest.json`
+  Create a new options key in `manifest.json`
 
 ```json
 {

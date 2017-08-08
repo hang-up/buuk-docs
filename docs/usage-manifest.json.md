@@ -34,7 +34,7 @@ The default manifest will follow this structure:
         "uml": false
       },
         
-      "articles" : {                              // All articles to be indexed
+      "articles" : {                            // All articles to be indexed
         "Category 1": [                         // Category name
           {
             "title": "Article title",           // Article name
@@ -42,9 +42,10 @@ The default manifest will follow this structure:
               "tag 1",
               "tag 2",
               "tag 3"
-            ]
-          }
-        ]
+            ],
+            "slug": "FileName"				   // The custom slug
+          }									 
+        ]									 
     }
 }
 ```
@@ -64,7 +65,7 @@ The default manifest will follow this structure:
 
 >> **uml**
 - `true`: will make use of [mermaid](http://knsv.github.io/mermaid/) to generate markdown based UML diagram.
- You will need to :
+   You will need to :
     * uncomment `<link rel="stylesheet" href="dist/mermaid.min.css">` in `index.html`
     * uncomment `<script src="dist/mermaid.min.js"></script>` in `index.html`
     * uncomment `.use(require('markdown-it-mermaid/src'))` in `src/js/bootstrap/renderer.js@renderer()`
