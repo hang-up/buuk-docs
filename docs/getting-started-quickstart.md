@@ -34,9 +34,7 @@ git remote set-url origin https://github.com/YOUR OWN USER NAME/buk.git
 2. Drop your markdown files in `static/docs`, and images into `static/img`.
 
    - All your static files (markdown documents, images, other resources) are stored in the folder `static`. This is where you will add any new files or make changes to existing files. 
-
-
-- - While recommended to place images into the `img` folder, it is not required. An example link to an image using Bük will look like: `![img](/static/img/image.png)`
+   - While recommended to place images into the `img` folder, it is not required. An example link to an image using Bük will look like: `![img](/static/img/image.png)`
 
 3. Update `static/manifest.json`
 
