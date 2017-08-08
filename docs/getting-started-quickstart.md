@@ -1,6 +1,7 @@
 # Quickstart
 
-1) Get Bük
+1. Get Bük
+
 > ##### Github
 
 > Version controlling your documents
@@ -11,11 +12,13 @@
 git clone https://github.com/hang-up/buk.git buk
 cd buk
 npm install
+
+# change remote if version control is needed
 git remote set-url origin https://github.com/YOUR OWN USER NAME/buk.git
 ```
 
 > ##### NPM
-Bük is also available on NPM. However, in the current state, it cannot be considered as a 'dependency' per se. As such, you will need to extract it from `/node_modules` after installing from NPM.
+> Bük is also available on NPM. However, in the current state, it cannot be considered as a 'dependency' per se. As such, you will need to extract it from `/node_modules` after installing from NPM.
 
 ```shell
 npm install buuk
@@ -28,9 +31,16 @@ git remote set-url origin https://github.com/YOUR OWN USER NAME/buk.git
 ```
 ---
 
-2) Drop your markdown files in `docs`.
-3) Update `manifest.json`
-4) `npm run build`
+2. Drop your markdown files in `static/docs`, and images into `static/img`.
+
+   - All your static files (markdown documents, images, other resources) are stored in the folder `static`. This is where you will add any new files or make changes to existing files. 
+
+
+- - While recommended to place images into the `img` folder, it is not required. An example link to an image using Bük will look like: `![img](/static/img/image.png)`
+
+3. Update `static/manifest.json`
+
+4. Build the Wiki with:`npm run build`.  The ready webpage will be available in `/dist`.
 
 **Refer to Usage/manifest.json to learn more about file naming conventions.** 
 
